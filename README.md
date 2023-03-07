@@ -1,5 +1,15 @@
 # Prometheus Docker Exporter
 
+[![CodeFactor](https://www.codefactor.io/repository/github/mirekdusin/prometheus-docker-exporter/badge/main)](https://www.codefactor.io/repository/github/mirekdusin/prometheus-docker-exporter/overview/main)
+
+[![Dependencies](https://img.shields.io/badge/dependencies-fastapi-blue)](https://pypi.org/project/fastapi/)
+[![Dependencies](https://img.shields.io/badge/dependencies-uvicorn-blue)](https://pypi.org/project/uvicorn/)
+[![Dependencies](https://img.shields.io/badge/dependencies-prometheus--client-blue)](https://pypi.org/project/prometheus-client/)
+[![Dependencies](https://img.shields.io/badge/dependencies-docker-blue)](https://pypi.org/project/docker/)
+[![Dependencies](https://img.shields.io/badge/dependencies-pyyaml-blue)](https://pypi.org/project/PyYAML/)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Prometheus Docker Exporter is a simple Python metrics exporter that collects metrics from Docker containers.
 The exporter is built using FastAPI and Uvicorn, and uses the Docker API to collect metrics from running containers.
 This exporter can optionally use HTTPS for secure communication.
