@@ -36,6 +36,8 @@ class MetricsCollector:
                                        self.labels)
         self.pids = Gauge('docker_container_pids', 'Number of processes by container', self.labels)
 
+        self.last_labels = {}
+
     def get_active_containers(self) -> List[Container]:
         """
         Gets a list of active Docker containers.
@@ -120,6 +122,19 @@ class MetricsCollector:
         for container_id, stats in metrics.items():
             labels = [container_id, stats['container_name']]
 
+            last_labels = self.last_labels.get(stats['container_name'], {})
+
+            if last_labels and labels != last_labels.get('labels'):
+                self.cpu_percent.remove(*last_labels.get('labels'))
+                self.mem_usage.remove(*last_labels.get('labels'))
+                self.mem_limit.remove(*last_labels.get('labels'))
+                self.mem_percent.remove(*last_labels.get('labels'))
+                self.net_rx_bytes.remove(*last_labels.get('labels'))
+                self.net_tx_bytes.remove(*last_labels.get('labels'))
+                self.block_read_bytes.remove(*last_labels.get('labels'))
+                self.block_write_bytes.remove(*last_labels.get('labels'))
+                self.pids.remove(*last_labels.get('labels'))
+
             self.cpu_percent.labels(*labels).set(stats['cpu_percent'])
             self.mem_usage.labels(*labels).set(stats['mem_usage'])
             self.mem_limit.labels(*labels).set(stats['mem_limit'])
@@ -129,6 +144,8 @@ class MetricsCollector:
             self.block_read_bytes.labels(*labels).set(stats['blkio_read_bytes'])
             self.block_write_bytes.labels(*labels).set(stats['blkio_write_bytes'])
             self.pids.labels(*labels).set(stats['num_procs'])
+
+            self.last_labels[stats['container_name']] = {'labels': labels}
 
     def collect_metrics(self) -> None:
         """
