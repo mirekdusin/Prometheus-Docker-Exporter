@@ -14,6 +14,10 @@ Prometheus Docker Exporter is a simple Python metrics exporter that collects met
 The exporter is built using FastAPI and Uvicorn, and uses the Docker API to collect metrics from running containers.
 This exporter can optionally use HTTPS for secure communication.
 
+--------------------
+
+![Screenshot of Grafana dashboard using metrics from exporter](extra/dashboard.png)
+
 ## Metrics
 
 The Prometheus Docker Exporter exposes the following metrics for each Docker container:
