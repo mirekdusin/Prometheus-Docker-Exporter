@@ -95,6 +95,9 @@ You can run Prometheus Docker Exporter as systemd service. Example:
 
 For security reasons, it's a good idea to configure your firewall so that only the Prometheus server can access the exporter metrics. You can do this by adding a rule to your firewall that only allows incoming traffic on port 9375 from the IP address of your Prometheus server. This will prevent others from accessing the exporter metrics.
 
+## Grafana Dashboard
+I've provided a simple Grafana dashboard that you can use to visualize the exported metrics. The dashboard can be found in the [extra/grafana.json](https://github.com/mirekdusin/Prometheus-Docker-Exporter/blob/main/extra/grafana.json) file.
+
 ## License
 
 This application is released under the MIT License.
