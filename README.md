@@ -38,7 +38,7 @@ Each metric is labeled with the `container_id` and `container_name`.
 
 To install Prometheus WireGuard Metrics Exporter you need to perform the following steps:
 
-      `git clone https://github.com/mirekdusin/prometheus-docker-metrics-exporter.git /opt/docker-exporter`
+      git clone https://github.com/mirekdusin/prometheus-docker-metrics-exporter.git /opt/docker-exporter
       
 ### Requirements
 
